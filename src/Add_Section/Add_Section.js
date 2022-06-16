@@ -35,7 +35,7 @@ function Add_Section() {
                         <h4>Pincode</h4>
                         <h4>Options</h4>
                     </div>
-                    {list.length > 0 &&
+                    {list.length > 0 && list.length <= 2 &&
                         list.map((i, index) => {
                             return (
                                 <div key={index} className='d-flex-sb'>
@@ -47,8 +47,8 @@ function Add_Section() {
                         })
                     }
                     <div style={{ textAlign: "left" }}>
-                        <button style={{ cursor: "pointer" }} onClick={Add}>+ Add a section</button>
-                        <button style={{ cursor: "pointer", marginLeft: "16px" }} onClick={(e, index) => Remove(e, index)} >+ Remove a section</button>
+                        <button style={{ cursor: "pointer" }} onClick={Add} disabled={list.length >= 2}>+ Add a section</button>
+                        <button style={{ cursor: "pointer", marginLeft: "16px" }} onClick={(e, index) => Remove(e, index)} disabled={list.length == 0}>+ Remove a section</button>
                     </div>
                 </div>
             </div>
