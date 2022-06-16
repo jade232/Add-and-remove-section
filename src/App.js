@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import Add_Section from './Add_Section/Add_Section';
 import './App.css';
+import Drag_Drop from './Drag&Drop/Drag_Drop';
 
 function App() {
+
+  const onFileChange = (files) => {
+    let rev = files[0];
+    // let firstValue = rev[0];
+    console.log(rev);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Add Section</h2>
+      {/* <Drag_Drop
+        onFileChange={(files) => onFileChange(files)}
+      ></Drag_Drop> */}
+      <Add_Section />
     </div>
   );
 }
