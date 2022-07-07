@@ -12,9 +12,9 @@ function Add_Section() {
         setList([
             ...list,
             {
-                name: "Mathew",
-                pincode: "641524",
-                option: "Yes"
+                name: "",
+                pincode: "",
+                option: ""
             }
         ]);
     }
@@ -23,7 +23,18 @@ function Add_Section() {
         const item = [...list];
         item.splice(index, 1);
         setList(item);
-        console.log(item);
+        // console.log(item);
+    }
+
+    const handleChange = (e, id) => {
+        let newValue = [...list];
+        let result = newValue.map((x) => {
+            if (x.id === id) {
+                x.name = e.target.value;
+                return x;
+            }
+        });
+        setList(result);
     }
 
     return (
@@ -35,20 +46,22 @@ function Add_Section() {
                         <h4>Pincode</h4>
                         <h4>Options</h4>
                     </div>
-                    {list.length > 0 && list.length <= 2 &&
+                    {list.length > 0 && list.length <= 6 &&
                         list.map((i, index) => {
                             return (
-                                <div key={index} className='d-flex-sb'>
-                                    <h4>{i.name}</h4>
-                                    <h4>{i.pincode}</h4>
-                                    <h4>{i.option}</h4>
+                                <div key={i.id} className='d-flex-sb'>
+                                    <input value={list.name} type="text" onChange={(e) => handleChange(e, i.id)} />
+                                    {/* <input value={i.option} type="text" name='option' onChange={(e, index) => handleChange(e, index)} /> */}
+                                    {/* <h4>{i.name}</h4> */}
+                                    {/* <h4>{i.pincode}</h4>
+                                    <h4>{i.option}</h4> */}
                                 </div>
                             );
                         })
                     }
                     <div style={{ textAlign: "left" }}>
-                        <button style={{ cursor: "pointer" }} onClick={Add} disabled={list.length >= 2}>+ Add a section</button>
-                        <button style={{ cursor: "pointer", marginLeft: "16px" }} onClick={(e, index) => Remove(e, index)} disabled={list.length == 0}>+ Remove a section</button>
+                        <button style={{ cursor: "pointer" }} onClick={Add} disabled={list.length >= 6}>+ Add a section</button>
+                        <button style={{ cursor: "pointer", marginLeft: "16px" }} onClick={(e, index) => Remove(e, index)} disabled={list.length === 0}>+ Remove a section</button>
                     </div>
                 </div>
             </div>
